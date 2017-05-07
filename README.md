@@ -1,9 +1,11 @@
-# [Alexa VoiceOps files of msales](http://www.msales.com)
+# VoiceOps with Alexa - Start/Stop EC2 Instances on AWS
 
 ## Introduction
 
 This sample project demonstrates how to use [Amazon Alexa](https://developer.amazon.com/alexa) to do various tasks on
 your [AWS Account](https://aws.amazon.com/)  using your Amazon Echo (dot).
+
+This example and code is brought to you by [msales - convert everything](http://www.msales.com)
 
 
 ## Lambda Function
@@ -202,18 +204,34 @@ Just a fun output function.
 ## How-to setup the Lambda function to be used as an Alexa Skill
 
 ### Intent Schema
-intent.js
+Alexa needs to know what intents your skill should contain. This done by providing a JSON document that describes your 
+intents. Further you are able to define so called slots. Slots are variables with a list of values that can be
+ referenced in the interaction with the user. In our cases we define the *AWS_REGION_LIST* slot which contains a lit of
+ all supported AWS regions within this skill. Our intent schema can be found in *src/intent.json*.
 
 
 ### Custom Slot Types 
-AWS_REGION_LIST.txt
+As already mentioned slots represent variables with pre-defined values the user can choose to interact with your
+ intents. The values for our slot *AWS_REGION_LIST* can be found in *src/AWS_REGION_LIST.txt*.
  
 
 ### Sample Utterances 
 
-sample_utterances.txt
+Sample utterances provide Alexa some examples to find the right intent when a user is using your skill. You can use the 
+defined slots within these utterances. In our case we use {Region} to reference a value of our slot *AWS_REGION_LIST*.
+Our utterances can be found in *src/sample_utterances.txt*
 
 
-## Code
+## So what? Let us tell you how you can test te skill
+
+Since you already have an AWS account ;) you should get an [Amazon Developer](https://developer.amazon.com/alexa) 
+Account too to be able to create your skill. Please click after the loging on "Get STarted" at the Alexa Skills Kit.
+
+![Alexa Skill Welcome Page](https://github.com/msales/alexa-voiceops/raw/master/screenshots/0_screenshot_alexa_skill.png)
+
+
+
+
+## Licence / Copyrights
 
 The code of this Alexa Skill / AWS Lambda function is released und the MIT Licence.
