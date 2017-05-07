@@ -1,0 +1,21 @@
+StartTaggedInstances Good Morning
+StartTaggedInstances Start all tagged instances
+
+StopTaggedInstances Good Bye
+StopTaggedInstances Stop all tagged instances
+StopTaggedInstances over and out
+
+GetRunningTaggedInstances How many instances are we running
+GetRunningTaggedInstances How many instances
+GetRunningTaggedInstances What is the current instances count
+
+SetCurrentRegion Set the current region to {Region}
+SetCurrentRegion Set the region to {Region}
+SetCurrentRegion Set my region to {Region}
+
+GetCurrentRegion What is the current region
+GetCurrentRegion Which region is currently set
+GetCurrentRegion What is my region
+
+GetSomeFun Let's have some fun
+GetSomeFun Tell me some fun
