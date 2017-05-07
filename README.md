@@ -18,7 +18,7 @@ The python-based Lambda function is organized into intent handler which represen
 
 **AWS Lambda Python Boiler Plate for Custom Alexa Skills**
 
-The following code shows a minimal boilerplate to create your lambda-based Alexa skill.
+The following code shows a minimal boilerplate to create your lambda-based Alexa skill:
 
 ```
 def lambda_handler(event, context):
@@ -155,6 +155,10 @@ def build_response(session_attributes, speechlet_response):
     }
 ```
 
+As you can see every intent will be mapped to a python function call. The response at the end is simply a dictionary 
+that tells Alexa with which text to response and if the session should be ended. 
+
+
 ### Our Lambda function
 
 The code of the Lambda function for the skill can be found in *src/aws_alexa_handler.py*. The single function will be 
@@ -169,6 +173,7 @@ The function contains two constants that are used within the intents:
 #### StartTaggedInstances
 
 Starts all stopped EC2 instances in the current region containing the tag *ALEXA_AWS_DEFAULT_TAG* with the value *True*.
+
 
 #### StopTaggedInstances
 
@@ -198,7 +203,7 @@ Returns some help for the VoiceOps Skill.
 
 #### GetSomeFun
 
-Just a fun output function.
+Just a fun output function which simply returns speech only without any further functionality.
 
 
 ## How-to setup the Lambda function to be used as an Alexa Skill
@@ -225,13 +230,82 @@ Our utterances can be found in *src/sample_utterances.txt*
 ## So what? Let us tell you how you can test te skill
 
 Since you already have an AWS account ;) you should get an [Amazon Developer](https://developer.amazon.com/alexa) 
-Account too to be able to create your skill. Please click after the loging on "Get STarted" at the Alexa Skills Kit.
+Account too to be able to create your skill. Please click after the loging on "Get Started" at the Alexa Skills Kit.
+
 
 ![Alexa Skill Welcome Page](https://github.com/msales/alexa-voiceops/raw/master/screenshots/0_screenshot_alexa_skill.png)
 
 
+On the Alexa Skills Kit overview just click "Add a New Skill" to get started. On the following screenshot we already 
+filled all necessary things for our "VoiceOps" Skill. Please an appropriate invocation name which will be used to 
+activate your skill later. The form offers you a link to some help how to choose your right invocation name. We tried 
+"AWS" at the beginning which does not work maybe because it's a brand or reserved name. That is the reason why we have 
+chosen "cloud" as our invocation name.
 
 
-## Licence / Copyrights
+![Skill information](https://github.com/msales/alexa-voiceops/raw/master/screenshots/0_screenshot_skill_information.png)
 
-The code of this Alexa Skill / AWS Lambda function is released und the MIT Licence.
+
+Next you have to configure the interaction model of your skill. As mentioned before a skill contains a JSON-based intent 
+definition, optionally some custom slots with values and some sample utterances.
+ 
+
+![Interaction model](https://github.com/msales/alexa-voiceops/raw/master/screenshots/1_screenshot_interaction_model.png)
+
+
+The next step contains the configuration of your skill. You can setup here some endpoints or the Amazon Resource Names 
+(ARNs) in order to call your lambda function. The ARN of your Lambda function can be found at the right side of the 
+detail overview of your function. 
+
+
+![Lambda ARN Location](https://github.com/msales/alexa-voiceops/raw/master/screenshots/2a_screenshot_ARN_from_lambda.png)
+
+
+Just copy the ARN and select the nearest location of your audience - or just you ;). One note to the Lambda function, 
+currently the Alexa Tools Kit Gateway is only supported in the following regions:
+
+
+* us-east-1 US East (N. Virginia)
+* eu-west-1 EU (Ireland)
+
+
+![Skill Configuration](https://github.com/msales/alexa-voiceops/raw/master/screenshots/2_screenshot_configuration.png)
+
+
+Having the skill configured you need to provide Amazon some publishing information - in case you wanna make your skill 
+public available. In our case we filled everything but at the end we just test the skill using the beta test feature.
+
+
+![Publishing Information](https://github.com/msales/alexa-voiceops/raw/master/screenshots/3_screenshot_publishing_information.png)
+
+
+Before your gonna be able to test your skill on your Echo using the beta test feature, you have provide some privacy 
+information too. In our case we set everything to "no" since we are not going to collect some data or address people 
+below the age of 13 years.
+
+
+![Privacy and Compliance](https://github.com/msales/alexa-voiceops/raw/master/screenshots/4_screenshot_privacy_and_compliance.png)
+
+
+Now you will be able to activate the "Beta Test" in order to test your skill on your Echo. Just choose the email of your 
+Account that is setup with your Echo. Your will get an email or simply call the Skill Url directly to add it into your 
+account.
+
+
+![Privacy and Compliance](https://github.com/msales/alexa-voiceops/raw/master/screenshots/5_screenshot_beta_test.png)
+
+
+The skill will then appear in your Skill overview.
+
+
+![Skill Overview](https://github.com/msales/alexa-voiceops/raw/master/screenshots/6_screenshot_skill_overview.png)
+
+
+Now lets have some fun with saying "Alexa, start cloud" ;). Feel free to ask Robert Hoppe <robert.hoppe@msales.com> of 
+msales if you have any questions.
+
+
+## Licence / Copyright
+
+The code of this Alexa Skill / AWS Lambda function is brought to you by msales / Robert Hoppe and released und the 
+MIT Licence.
